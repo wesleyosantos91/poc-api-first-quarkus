@@ -16,7 +16,7 @@ cache:
     - '$HOME/.sonar/cache'
 
 script:
-  - ./mvnw clean compile
-  - ./mvnw org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=wesleyosantos91_poc-api-first-quarkus
+  - mvn clean compile
+  - mvn org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=wesleyosantos91_poc-api-first-quarkus
 before_install:
   - chmod +x mvnw
