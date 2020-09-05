@@ -1,30 +1,45 @@
-# poc-api-first-quarkus project
+# POC - API FIRST QUARKUS
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+## Prova de conceito - API FIRST
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+> API first significa que a Application Programming Interface  é uma estratégia na qual a primeira ordem dos negócios é desenvolver uma API que coloque os interesses do desenvolvedor de destino em primeiro lugar e depois construa o produto sobre ele (seja um site, aplicativo móvel ou software SaaS). Ao desenvolver APIs com os desenvolvedores em mente, você e seus desenvolvedores estão economizando muito trabalho enquanto estabelecem as bases para que outros possam desenvolver.
 
-## Running the application in dev mode
+# Tecnologias
+- Java 11
+- quarkus 1.7.0.Final
+    - quarkus-resteasy
+    - quarkus-resteasy-json
+    - quarkus-hibernate-orm
+    - quarkus-hibernate-orm-panache
+    - quarkus-flyway
+    - quarkus-jdbc-mysql
+    - quarkus-hibernate-validator
+    - quarkus-rest-client
+    - quarkus-smallrye-openapi
+    - quarkus-junit5
+    - rest-assured
+    - testcontainers
+    - approvaltests
+ - Git
+ - MYSQL
 
-You can run your application in dev mode that enables live coding using:
-```
-./mvnw quarkus:dev
-```
+# Execução
 
-## Packaging and running the application
+A execução das aplicações são feitas através do de um comando Maven que envoca a inicialização do Quarkus.
 
-The application can be packaged using `./mvnw package`.
-It produces the `poc-api-first-quarkus-1.0.0-SNAPSHOT-runner.jar` file in the `/target` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/lib` directory.
+- Scripts
+    ### Executar docker-compose
+    - 1° comando: ``` cd src/main/docker/``` 
+    - 2° comando: ```docker-compose -f docker-compose.yml up``` 
+    ### Executar a aplicação
+    -  ```./mvnw clean quarkus:dev```
+    ### Executar testes
+    -  ```./mvnw clean verify sonar:sonar```
+    
+# Utilização
 
-The application is now runnable using `java -jar target/poc-api-first-quarkus-1.0.0-SNAPSHOT-runner.jar`.
+## Swagger
+http://localhost:8080/swagger-ui/#/
 
-## Creating a native executable
-
-You can create a native executable using: `./mvnw package -Pnative`.
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: `./mvnw package -Pnative -Dquarkus.native.container-build=true`.
-
-You can then execute your native executable with: `./target/poc-api-first-quarkus-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/building-native-image.
+## Sonar
+http://localhost:9000/
