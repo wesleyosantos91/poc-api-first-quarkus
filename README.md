@@ -51,6 +51,48 @@
 
 # Execução
 
+
+> O Conceito é aplicado com o puglin *swagger-codegen-maven-plugin* onde o mesmo ler o arquivo api.yml, e gera a interface e as entidades com toda documentação baseado no designer da API   
+```xml
+    <plugin>
+       <groupId>io.swagger.codegen.v3</groupId>
+       <artifactId>swagger-codegen-maven-plugin</artifactId>
+       <version>3.0.8</version>
+       <executions>
+          <execution>
+             <goals>
+                <goal>generate</goal>
+             </goals>
+             <configuration>
+                <inputSpec>${project.basedir}/src/main/resources/swagger/api.yml</inputSpec>
+                <language>jaxrs-spec</language>
+                <output>${project.build.directory}/generated-sources</output>
+                <generateApiTests>false</generateApiTests>
+                <generateModelTests>false</generateModelTests>
+                <configOptions>
+                   <interfaceOnly>true</interfaceOnly>
+                   <dateLibrary>java8</dateLibrary>
+                   <java8>true</java8>
+                </configOptions>
+             </configuration>
+          </execution>
+       </executions>
+       <dependencies>
+          <dependency>
+             <groupId>io.swagger.codegen.v3</groupId>
+             <artifactId>swagger-codegen-generators</artifactId>
+             <version>3.0.8</version>
+          </dependency>
+       </dependencies>
+    </plugin>
+```
+##### Estrutura
+![Estrutura](src/main/resources/images/codigo-gerado.png "Estrutura")
+##### Interface
+![Interface](src/main/resources/images/codigo-gerado-entidade.png "Interface")
+##### Entidade
+![Entidade](src/main/resources/images/codigo-gerado-interface.png "Entidade")
+
 A execução das aplicações são feitas através do de um comando Maven que envoca a inicialização do Quarkus.
 
 - Scripts
