@@ -58,9 +58,9 @@ A execução das aplicações são feitas através do de um comando Maven que en
     - 1° comando: ``` cd src/main/docker/``` 
     - 2° comando: ```docker-compose -f docker-compose.yml up``` 
     ### Executar a aplicação
-    -  ```./mvnw clean quarkus:dev```
+    -  ```./mvnw clean compile quarkus:dev```
     ### Executar testes
-    -  ```./mvnw clean verify sonar:sonar```
+    -  ```./mvnw clean compile verify sonar:sonar```
     
 # Utilização
 
