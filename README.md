@@ -27,6 +27,8 @@
 
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=wesleyosantos91_poc-api-first-quarkus&metric=ncloc)](https://sonarcloud.io/dashboard?id=wesleyosantos91_poc-api-first-quarkus)
 
+# License
+![GitHub](https://img.shields.io/github/license/wesleyosantos91/poc-api-first-quarkus)
 
 # Tecnologias
 - Java 11
