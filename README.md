@@ -24,6 +24,7 @@
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=wesleyosantos91_poc-api-first-quarkus&metric=bugs)](https://sonarcloud.io/dashboard?id=wesleyosantos91_poc-api-first-quarkus)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=wesleyosantos91_poc-api-first-quarkus&metric=code_smells)](https://sonarcloud.io/dashboard?id=wesleyosantos91_poc-api-first-quarkus)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=wesleyosantos91_poc-api-first-quarkus&metric=sqale_index)](https://sonarcloud.io/dashboard?id=wesleyosantos91_poc-api-first-quarkus)
+
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=wesleyosantos91_poc-api-first-quarkus&metric=ncloc)](https://sonarcloud.io/dashboard?id=wesleyosantos91_poc-api-first-quarkus)
 
 
