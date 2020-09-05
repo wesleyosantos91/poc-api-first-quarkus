@@ -13,13 +13,15 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static io.github.wesleyosantos91.model.Pessoa.*;
+
 @ApplicationScoped
 public class PessoaService {
 
     @Transactional
     public ResponsePessoa alterarPessoa(Long codigo, RequestPutPessoa body) {
 
-        Optional<Pessoa> pessoaOptional = Pessoa.findByIdOptional(codigo);
+        Optional<Pessoa> pessoaOptional = findByIdOptional(codigo);
 
         if (pessoaOptional.isEmpty()) {
             throw new ObjectNotFoundException(ErroEnum.PESSOA_COM_ESSE_CODIGO_NAO_EXISTE.getDetalhe() + codigo);
@@ -27,25 +29,25 @@ public class PessoaService {
 
         Pessoa pessoa = pessoaOptional.get();
 
-        Pessoa.requestPutPessoatoEntity(body, pessoa);
+        requestPutPessoatoEntity(body, pessoa);
 
         pessoa.persist();
 
-        return Pessoa.pessoaToResponsePessoa(pessoa);
+        return pessoaToResponsePessoa(pessoa);
     }
 
     @Transactional
     public ResponsePessoa cadastrarPessoa(RequestPostPessoa body) {
 
-        Pessoa pessoa = Pessoa.requestPostPessoatoEntity(body);
+        Pessoa pessoa = requestPostPessoatoEntity(body);
         pessoa.persist();
 
-        return Pessoa.pessoaToResponsePessoa(pessoa);
+        return pessoaToResponsePessoa(pessoa);
     }
 
     public List<ResponsePessoa> consultarTodos() {
 
-        return Pessoa.findAll().list().stream().map(p -> Pessoa.pessoaToResponsePessoa((Pessoa) p)).collect(Collectors.toList());
+        return findAll().list().stream().map(p -> pessoaToResponsePessoa((Pessoa) p)).collect(Collectors.toList());
     }
 
     public ResponsePessoa consultarPeloCodigo(Long codigo) {
@@ -54,9 +56,9 @@ public class PessoaService {
             throw new ObjectNotFoundException(ErroEnum.PESSOA_COM_ESSE_CODIGO_NAO_EXISTE.getDetalhe() + codigo);
         }
 
-        Optional<Pessoa> pessoaOptional = Pessoa.findByIdOptional(codigo);
+        Optional<Pessoa> pessoaOptional = findByIdOptional(codigo);
 
-        return Pessoa.pessoaToResponsePessoa(pessoaOptional.orElseThrow(() -> new ObjectNotFoundException(ErroEnum.PESSOA_COM_ESSE_CODIGO_NAO_EXISTE.getDetalhe() + codigo)));
+        return pessoaToResponsePessoa(pessoaOptional.orElseThrow(() -> new ObjectNotFoundException(ErroEnum.PESSOA_COM_ESSE_CODIGO_NAO_EXISTE.getDetalhe() + codigo)));
 
     }
 
@@ -67,11 +69,11 @@ public class PessoaService {
             throw new ObjectNotFoundException(ErroEnum.PESSOA_COM_ESSE_CODIGO_NAO_EXISTE.getDetalhe() + codigo);
         }
 
-        Pessoa.deleteById(codigo);
+        deleteById(codigo);
     }
 
     private boolean exist(Long codigo) {
-        return Pessoa.findByIdOptional(codigo).isPresent();
+        return findByIdOptional(codigo).isPresent();
     }
 
 }
