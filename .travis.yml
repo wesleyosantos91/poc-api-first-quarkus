@@ -1,5 +1,12 @@
 language: java
-dist: trusty
+sudo: false
+install: true
+addons:
+  sonarqube:
+    organization: "wesleyosantos91-github"
+    token:
+      secure: $SONAR_TOKEN
+
 jdk:
   - oraclejdk11
 
@@ -7,6 +14,6 @@ cache:
   directories:
     - '$HOME/.m2/repository'
 script:
-  - ./mvnw clean compile install
+  - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=wesleyosantos91_poc-api-first-quarkus
 before_install:
   - chmod +x mvnw
