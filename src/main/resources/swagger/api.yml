@@ -1,0 +1,241 @@
+swagger: '2.0'
+
+schemes:
+  - http
+  - https
+
+host: localhost:8080
+basePath: /pessoas/v1
+
+info:
+  version: 1.0.0
+  title: Pessoa API
+  description: Documentação para manter pessoa
+  termsOfService: http://localhost:8085/pessoas/v1/termo-uso
+  contact:
+    name: Suporte
+    url: http://localhost:8085/pessoas/v1/suporte
+    email: suporte@pessoaapi.com
+
+paths:
+  '/pessoas':
+    post:
+      summary: Cadastrar Pessoa
+      description: Cadastra uma nova pessoa
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      operationId: cadastrarPessoa
+      parameters:
+        - in: body
+          name: RequestPostPessoa
+          schema:
+            $ref: '#/definitions/RequestPostPessoa'
+      responses:
+        201:
+          description: Cadastro efetuado com sucesso
+          schema:
+            $ref: '#/definitions/ResponsePessoa'
+        400:
+          description: Requisição inválida
+          schema:
+            $ref: '#/definitions/ResponseErro'
+        401:
+          description: Requisição não autorizada
+          schema:
+            $ref: '#/definitions/ResponseErro'
+        500:
+          description: Erro interno do servidor
+          schema:
+            $ref: '#/definitions/ResponseErro'
+    get:
+      summary: Consultar todas pessoas
+      description: Consultar todas registros de Pessoas
+      produces:
+        - application/json
+      operationId: consultarTodos
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ResponsePessoa'
+        400:
+          description: Requisição inválida
+          schema:
+            $ref: '#/definitions/ResponseErro'
+        401:
+          description: Requisição não autorizada
+          schema:
+            $ref: '#/definitions/ResponseErro'
+        500:
+          description: Erro interno do servidor
+          schema:
+            $ref: '#/definitions/ResponseErro'
+  '/pessoas/{codigo}':
+    get:
+      summary: Consultar pessoa pelo código
+      description: Consultar os dados de uma pessoa
+      produces:
+        - application/json
+      operationId: consultarPeloCodigo
+      parameters:
+        - in: path
+          name: codigo
+          description: código da pessoa
+          required: true
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/ResponsePessoa'
+        400:
+          description: Requisição inválida
+          schema:
+            $ref: '#/definitions/ResponseErro'
+        401:
+          description: Requisição não autorizada
+          schema:
+            $ref: '#/definitions/ResponseErro'
+        500:
+          description: Erro interno do servidor
+          schema:
+            $ref: '#/definitions/ResponseErro'
+    put:
+      summary:  Alterar a pessoa
+      description: Altera os dados da pessoa existente.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      operationId: alterarPessoa
+      parameters:
+        - in: path
+          name: codigo
+          type: integer
+          format: int64
+          required: true
+        - in: body
+          name: RequestPutPessoa
+          schema:
+            $ref: '#/definitions/RequestPutPessoa'
+      responses:
+        '200':
+          description: Alteração efeturada com sucesso!
+          schema:
+            $ref: '#/definitions/ResponsePessoa'
+        '400':
+          description: Requisição inválida.
+          schema:
+            $ref: '#/definitions/ResponseErro'
+        '401':
+          description: Requisição não autorizada.
+          schema:
+            $ref: '#/definitions/ResponseErro'
+        '404':
+          description: Registro não encontrado.
+          schema:
+            $ref: '#/definitions/ResponseErro'
+        '500':
+          description: Erro no servidor.
+          schema:
+            $ref: '#/definitions/ResponseErro'
+    delete:
+      summary: Excluir a pessoa
+      description: Exclui pessoa existente
+      operationId: excluirPessoa
+      parameters:
+        - in: path
+          name: codigo
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '204':
+          description: Exclusão efetuada com sucesso
+        '400':
+          description: Requisição inválida.
+          schema:
+            $ref: '#/definitions/ResponseErro'
+        '401':
+          description: Requisição não autorizada.
+          schema:
+            $ref: '#/definitions/ResponseErro'
+        '404':
+          description: Registro não encontrado.
+          schema:
+            $ref: '#/definitions/ResponseErro'
+        '500':
+          description: Erro no servidor
+          schema:
+            $ref: '#/definitions/ResponseErro'
+definitions:
+  ResponsePessoa:
+    properties:
+      codigo:
+        type: integer
+        format: int64
+        example: 1
+      nome:
+        type: string
+        example: Joao da Silva
+      data_nascimento:
+        type: string
+        format: date
+      cpf:
+        type: string
+        minLength: 11
+        maxLength: 11
+        example: 22400952027
+      email:
+        type: string
+        format: email
+  RequestPostPessoa:
+    type: object
+    properties:
+      nome:
+        type: string
+        example: Joao da Silva
+      data_nascimento:
+        type: string
+        format: date
+      cpf:
+        type: string
+        minLength: 11
+        maxLength: 11
+        example: 22400952027
+      email:
+        type: string
+        format: email
+  RequestPutPessoa:
+    type: object
+    properties:
+      nome:
+        type: string
+        example: Joao da Silva
+      data_nascimento:
+        type: string
+        format: date
+      email:
+        type: string
+        format: email
+  ResponseErro:
+    type: object
+    properties:
+      timestamp:
+        type: string
+        format: date-time
+      status:
+        type: integer
+        format: int32
+        example: 500
+      erro:
+        type: string
+        example: Internal Server Error
+      mensagem:
+        type: string
+        example: Erro ao processar a requisição
