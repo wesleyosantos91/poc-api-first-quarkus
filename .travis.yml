@@ -5,7 +5,7 @@ addons:
   sonarcloud:
     organization: "wesleyosantos91-github"
     token:
-      secure: $SONAR_TOKEN
+      secure: ${SONAR_TOKEN}
 
 jdk:
   - oraclejdk11
