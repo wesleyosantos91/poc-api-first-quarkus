@@ -1,8 +1,8 @@
 language: java
-sudo: false
+sudo: true
 install: true
 addons:
-  sonarqube:
+  sonarcloud:
     organization: "wesleyosantos91-github"
     token:
       secure: $SONAR_TOKEN
