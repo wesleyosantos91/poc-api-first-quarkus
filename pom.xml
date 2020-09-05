@@ -18,7 +18,7 @@
     <quarkus.platform.version>1.7.0.Final</quarkus.platform.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
 
-    <jacoco.version>0.8.4</jacoco.version>
+    <jacoco.version>0.8.2</jacoco.version>
 
     <swagger-codegen-maven-plugin.version>3.0.8</swagger-codegen-maven-plugin.version>
     <swagger-codegen-generators.version>1.0.8</swagger-codegen-generators.version>
@@ -102,13 +102,6 @@
       <artifactId>lombok</artifactId>
       <version>1.18.8</version>
       <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jacoco</groupId>
-      <artifactId>org.jacoco.agent</artifactId>
-      <classifier>runtime</classifier>
-      <scope>test</scope>
-      <version>${jacoco.version}</version>
     </dependency>
     <dependency>
       <groupId>io.swagger.core.v3</groupId>
