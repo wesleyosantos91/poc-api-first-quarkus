@@ -89,9 +89,9 @@
 ##### Estrutura
 ![Estrutura](src/main/resources/images/codigo-gerado.png "Estrutura")
 ##### Interface
-![Interface](src/main/resources/images/codigo-gerado-entidade.png "Interface")
+![Interface](src/main/resources/images/codigo-gerado-interface.png "Interface")
 ##### Entidade
-![Entidade](src/main/resources/images/codigo-gerado-interface.png "Entidade")
+![Entidade](src/main/resources/images/codigo-gerado-entidade.png "Entidade")
 
 A execução das aplicações são feitas através do de um comando Maven que envoca a inicialização do Quarkus.
 
